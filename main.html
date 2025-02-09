@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Notes Site</title>
+  <style>
+    /* Basic reset and styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffe6e6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #e3342f;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: #e3342f;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin: 0.5rem;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #cc1f1a;
+    }
+    /* Container styles for the note and letter */
+    .container {
+      margin-top: 1.5rem;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .letter h2 {
+      margin: 0;
+      color: #e3342f;
+    }
+    .letter p {
+      margin: 1rem 0;
+    }
+    .letter p.signature {
+      text-align: right;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>A Special Note for You, Muna 💌</h1>
+  <button id="revealBtn">Click to Reveal Surprise 🎁</button>
+
+  <!-- Container for the random love note and button for letter -->
+  <div id="noteContainer" class="container">
+    <p id="noteText"></p>
+    <button id="letterBtn">Read My Love Letter 💙</button>
+  </div>
+
+  <!-- Container for the full love letter -->
+  <div id="letterContainer" class="container letter">
+    <h2>Dear Muna,</h2>
+    <p>
+      From the moment I met you, my world changed. Your laughter is my favorite melody,
+      and your kindness is my greatest inspiration. Every day with you is a gift, and I cherish every second we share.
+      You are my sunshine, my happiness, and the love of my life. No matter where life takes us, my heart will always belong to you.
+      I love you more than words can express. 💖
+    </p>
+    <p class="signature">Forever Yours,<br>Prakash Kusari</p>
+  </div>
+
+  <script>
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      const revealBtn = document.getElementById('revealBtn');
+      const noteContainer = document.getElementById('noteContainer');
+      const noteText = document.getElementById('noteText');
+      const letterBtn = document.getElementById('letterBtn');
+      const letterContainer = document.getElementById('letterContainer');
+
+      // Array of love notes
+      const loveNotes = [
+        "You make my world brighter every day, Muna! 💖",
+        "Your smile is my favorite view, my love. 😊",
+        "I cherish every moment with you, my queen. 💕"
+      ];
+
+      // When the reveal button is clicked, choose a random note and show the note container
+      revealBtn.addEventListener('click', function () {
+        const randomNote = loveNotes[Math.floor(Math.random() * loveNotes.length)];
+        noteText.textContent = randomNote;
+        noteContainer.classList.add('show');
+      });
+
+      // When the letter button is clicked, show the letter container
+      letterBtn.addEventListener('click', function () {
+        letterContainer.classList.add('show');
+      });
+    });
+  </script>
+
+</body>
+</html>
